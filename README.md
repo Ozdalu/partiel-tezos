@@ -1,4 +1,10 @@
 # partiel-tezos
 
-Install project :
+## Install project
 make ligo-install
+
+## Start flextesa
+make sandbox-start
+
+## Stop flextesa
+make sandbox-stop
