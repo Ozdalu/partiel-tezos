@@ -10,6 +10,13 @@ type extension = {
 type storage = FA2.storage
 type extended_storage = extension storage
 
+type parameter = 
+    | First_admin of address
+    | Add_admin of address
+    | Remove_admin of address
+    | Ban_creator of address
+    | Add_creator of address
+
 // Définir un Administrateur
 let first_admin (first_admin: address) (xd_storage: extended_storage) : extended_storage =
     let admin_map_size : address option = Map.size xd_storage.admins in
@@ -29,7 +36,7 @@ let add_admin (new_admin: address) (xd_storage: extended_storage) : extended_sto
         {xd_storage with admins = new_admins}
 
 // supprimer d’autres administrateurs
-let remove_admin (admin_to_remove) (xd_storage: extended_storage) : extended_storage =
+let remove_admin (admin_to_remove: address) (xd_storage: extended_storage) : extended_storage =
     let sender_admin : address option = Map.find_opt Tezos.get_sender xd_storage.admins in
     match sender_admin with
     None -> failwith "You must be admin to remove admin"
@@ -38,7 +45,7 @@ let remove_admin (admin_to_remove) (xd_storage: extended_storage) : extended_sto
         {xd_storage with admins = new_admins}
 
 // L’Administrateur peut bannir (sur une blacklist) des Creators
-let ban_creator (creator_to_ban) (xd_storage: extended_storage) : extended_storage =
+let ban_creator (creator_to_ban: address) (xd_storage: extended_storage) : extended_storage =
     let sender_admin : address option = Map.find_opt Tezos.get_sender xd_storage.admins in
     match sender_admin with
     None -> failwith "You must be admin to ban creator"
@@ -47,7 +54,7 @@ let ban_creator (creator_to_ban) (xd_storage: extended_storage) : extended_stora
         {xd_storage with banned = new_banned}
 
 // creator must pay 10 tez to be automatically added to whitelist
-let add_creator (creator_to_add) (xd_storage: extended_storage) : extended_storage =
+let add_creator (creator_to_add: address) (xd_storage: extended_storage) : extended_storage =
     let enough_paid : bool = Tezos.get_amount () >= 10tz in
     if Tezos.get_amount () < 10tez then
         failwith "This contract does not accept tokens."
