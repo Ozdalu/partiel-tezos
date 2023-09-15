@@ -4,6 +4,8 @@ type extension = {
     admins : (address, bool) map; //first address is the added, bool for accepted or not
     banned : (address, address) map; // first address is the banned user, second address is the admin
     whitelisted : (address, bool) map; // first address is the chitelisted user, bool is if whitelisted
+}
+
 
 type storage = FA2.storage
 type extended_storage = extension storage
@@ -52,3 +54,4 @@ let add_creator (creator_to_add) (xd_storage: extended_storage) : extended_stora
     else
         let new_whitelisted = Map.add creator_to_add true xd_storage.whitelisted in
         {xd_storage with whitelisted = new_whitelisted}
+
