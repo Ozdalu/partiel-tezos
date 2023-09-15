@@ -1,0 +1,33 @@
+{
+  "checksum": "4a2df3306be0b984020cb69f3166139f",
+  "root": "partiel-tezos@link-dev:./package.json",
+  "node": {
+    "partiel-tezos@link-dev:./package.json": {
+      "id": "partiel-tezos@link-dev:./package.json",
+      "name": "partiel-tezos",
+      "version": "link-dev:./package.json",
+      "source": {
+        "type": "link-dev",
+        "path": ".",
+        "manifest": "package.json"
+      },
+      "overrides": [],
+      "dependencies": [ "ligo-extendable-fa2@1.0.4@d41d8cd9" ],
+      "devDependencies": []
+    },
+    "ligo-extendable-fa2@1.0.4@d41d8cd9": {
+      "id": "ligo-extendable-fa2@1.0.4@d41d8cd9",
+      "name": "ligo-extendable-fa2",
+      "version": "1.0.4",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://packages.ligolang.org/-/api/ligo-extendable-fa2/-/ligo-extendable-fa2-1.0.4.tgz#sha1:4c41214de0dfb9e377bdc3db9afa27c753ee039d"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    }
+  }
+}

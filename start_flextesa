@@ -1,0 +1,8 @@
+#!/bin/sh
+
+image=oxheadalpha/flextesa:20230901
+script=nairobibox
+docker run --rm --name flextesa-sandbox --detach -p 20000:20000 \
+       -e block_time=3 \
+       -e flextesa_node_cors_origin='*' \
+       "$image" "$script" start
