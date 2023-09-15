@@ -1,0 +1,4 @@
+#!/bin/sh
+export ESY__NODE_BIN_PATH='/home/ormazd/Documents/github/partiel-tezos/_esy/default/bin'
+exec '/usr/bin/node' -r '/home/ormazd/Documents/github/partiel-tezos/_esy/default/pnp.js' "$@"
+              

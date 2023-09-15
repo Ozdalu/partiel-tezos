@@ -1,0 +1,21 @@
+{
+  "name": "ligo-extendable-fa2",
+  "version": "1.0.4",
+  "main": "./lib/main.mligo",
+  "description": "Library of extendable FA2",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smart-chain-fr/ligoExtendableFA2.git"
+  },
+  "keywords": ["ligo", "tezos", "FA2"],
+  "author": "Smart-chain <contact@smart-chain.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smart-chain-fr/ligoExtendableFA2/issues"
+  },
+  "homepage": "https://github.com/smart-chain-fr/ligoExtendableFA2"
+}
