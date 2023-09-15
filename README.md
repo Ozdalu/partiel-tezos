@@ -1,6 +1,4 @@
 # partiel-tezos
 
-## Prerequisite
-Docker
-
 Install project :
+make ligo-install
