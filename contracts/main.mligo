@@ -3,8 +3,7 @@
 type extension = {
     admins : (address, bool) map; //first address is the added, bool for accepted or not
     banned : (address, address) map; // first address is the banned user, second address is the admin
-    whitelisted : (address, nat) map; // first address is the chitelisted user, nat is tez deposited
-}
+    whitelisted : (address, bool) map; // first address is the chitelisted user, bool is if whitelisted
 
 type storage = FA2.storage
 type extended_storage = extension storage
@@ -45,3 +44,11 @@ let ban_creator (creator_to_ban) (xd_storage: extended_storage) : extended_stora
         let new_banned = Map.add creator_to_ban Tezos.get_sender xd_storage.banned in
         {xd_storage with banned = new_banned}
 
+// creator must pay 10 tez to be automatically added to whitelist
+let add_creator (creator_to_add) (xd_storage: extended_storage) : extended_storage =
+    let enough_paid : bool = Tezos.get_amount () >= 10tz in
+    if Tezos.get_amount () < 10tez then
+        failwith "This contract does not accept tokens."
+    else
+        let new_whitelisted = Map.add creator_to_add true xd_storage.whitelisted in
+        {xd_storage with whitelisted = new_whitelisted}
